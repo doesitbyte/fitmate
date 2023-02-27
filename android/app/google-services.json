@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "183788843963",
+    "project_id": "fitmate-f3e7f",
+    "storage_bucket": "fitmate-f3e7f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183788843963:android:9686424f3c85c71124ca9e",
+        "android_client_info": {
+          "package_name": "com.doesitbyte.fitmate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183788843963-4v9m036auk3emvnv31pclcte9h5ic279.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbGPHVSVjkFHZHWPDIGFLost2ugYm3ES4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183788843963-4v9m036auk3emvnv31pclcte9h5ic279.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
