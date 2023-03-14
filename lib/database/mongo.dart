@@ -9,10 +9,12 @@ class MongoDatabase {
     await db.open();
   }
 
-  static listExercise() async {
+  static listExercise(String bodyPart) async {
     var collection = db.collection("exercise");
     try {
-      final exercises = await collection.find().toList();
+      final exercises = await collection.find({
+        "bodyPart": bodyPart,
+      }).toList();
       return exercises;
     } catch (e) {
       return Future.value(e);

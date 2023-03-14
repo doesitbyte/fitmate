@@ -1,3 +1,4 @@
+import 'package:fitmate/components/select_exercise_modal.dart';
 import 'package:flutter/material.dart';
 
 class CreateWorkout extends StatefulWidget {
@@ -8,7 +9,7 @@ class CreateWorkout extends StatefulWidget {
 }
 
 class _CreateWorkoutState extends State<CreateWorkout> {
-  String _selectedTargetMuscle = "";
+  List _currentWorkout = [];
 
   final List _targetMuscles = [
     "lats",
@@ -16,6 +17,12 @@ class _CreateWorkoutState extends State<CreateWorkout> {
     "abs",
     "glutes",
   ];
+
+  void updateCurrentWorkout(Map workoutSection) {
+    setState(() {
+      _currentWorkout = [..._currentWorkout, workoutSection];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,36 +39,12 @@ class _CreateWorkoutState extends State<CreateWorkout> {
                     builder: (context) {
                       return StatefulBuilder(
                         builder: (context, setStateModal) => Container(
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).cardColor,
-                          ),
-                          child: Column(
-                            children: [
-                              Text(
-                                "Which muscle group does this exercise target?",
-                                style: TextStyle(),
-                              ),
-                              Container(
-                                child: Wrap(
-                                  children: [
-                                    for (String target in _targetMuscles)
-                                      InkWell(
-                                        onTap: () {
-                                          setStateModal(() {
-                                            _selectedTargetMuscle = target;
-                                          });
-                                        },
-                                        child: TargetBox(
-                                            target: target,
-                                            selected: (_selectedTargetMuscle ==
-                                                target)),
-                                      ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).cardColor,
+                            ),
+                            child: SelectExerciseModal(
+                              addExercise: updateCurrentWorkout,
+                            )),
                       );
                     },
                   );
@@ -72,32 +55,6 @@ class _CreateWorkoutState extends State<CreateWorkout> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class TargetBox extends StatelessWidget {
-  const TargetBox({
-    super.key,
-    required this.target,
-    required this.selected,
-  });
-
-  final String target;
-  final bool selected;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-      decoration: BoxDecoration(
-        color: selected ? Theme.of(context).primaryColor : null,
-        border: Border.all(
-          color: Theme.of(context).primaryColor,
-        ),
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Text(target),
     );
   }
 }
